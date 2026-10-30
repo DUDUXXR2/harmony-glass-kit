@@ -1,0 +1,37 @@
+﻿{
+  "_comment": "HarmonyGlass 全局材质单源定义。改这里 -> 管理员运行 recipes\\apply_material.ps1 -> 全部表面生效。",
+  "version": 8,
+  "blur": {
+    "_comment": "v7 阶段A: 低模糊高透射。参考项目实测: 华为=近零模糊(0.3dp)+强边缘折射(21dp带/18dp位移)+方向性高光(|dot(n,45°光)|×0.4)。WindhawkBlur 无位移能力 -> 折射需自定义 mod(Win2D DisplacementMap)。",
+    "amount": 8,
+    "amountLite": 5,
+    "tintColor": "#FFF5F8FC",
+    "tintOpacity": 0.12,
+    "tintLuminosityOpacity": 0.05,
+    "tintSaturation": 1.35
+  },
+  "radius": {
+    "_comment": "R角(px)。华为底栏=无圆角全宽贴底(0); 大面板=16; element=10。",
+    "taskbarPill": 0,
+    "panel": 16,
+    "element": 10
+  },
+  "edge": {
+    "_comment": "v8 假高光定案: 上下双缘亮线。参考 |dot(n,45°光向)|≈0.707 上下对称 -> 顶/底同亮; ambient 只照 dl>0 半边(底) -> 底线当背光。顶=冰白镜面59%, 底=纯白背光30%, 均厚1.2px。真高光需法线, Styler 不支持。",
+    "highlightTop": "#96EAF6FF",
+    "highlightTop2": "#38EAF6FF",
+    "highlightBottom": "#4DFFFFFF",
+    "darkStroke": "#3D141C26",
+    "borderThickness": "0,1.2,0,1.2",
+    "hairline": "#33FFFFFF"
+  },
+  "surfaces": {
+    "taskbar": true,
+    "startMenu": true,
+    "notificationCenter": true,
+    "controlCenter": true,
+    "media": true,
+    "trayFlyouts": true,
+    "jumpLists": true
+  }
+}
